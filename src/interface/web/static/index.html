@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF QA System</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📚 PDF QA System</h1>
+            <p>Upload PDF Documents and Ask Questions</p>
+        </header>
+
+        <main>
+            <section class="upload-section">
+                <h2>Upload PDF</h2>
+                <form id="upload-form" enctype="multipart/form-data">
+                    <div class="file-drop-area">
+                        <span class="fake-btn">Choose File</span>
+                        <span class="file-msg">or drag & drop</span>
+                        <input class="file-input" type="file" name="file" accept=".pdf">
+                    </div>
+                    <button type="submit" class="btn primary-btn">Upload</button>
+                </form>
+                <div id="upload-status"></div>
+            </section>
+
+            <section class="documents-section">
+                <h2>Uploaded Documents</h2>
+                <div id="documents-list">
+                    <p class="empty-message">No documents uploaded yet</p>
+                </div>
+            </section>
+
+            <section class="question-section">
+                <h2>Ask a Question</h2>
+                <form id="question-form">
+                    <div class="input-group">
+                        <select id="doc-selector" required>
+                            <option value="">Select a document</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <textarea id="question-input" rows="3" placeholder="Write your question about the PDF..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn primary-btn">Ask</button>
+                </form>
+            </section>
+
+            <section class="answer-section">
+                <h2>Answer</h2>
+                <div id="answer-content">
+                    <p class="empty-message">No answer yet</p>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 PDF QA System</p>
+        </footer>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html> 

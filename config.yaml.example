@@ -1,0 +1,92 @@
+# PDF Question Answering System Configuration
+# =====================================
+# This is an example configuration file. Copy this to 'config.yaml' and modify as needed.
+# Different environments (development, testing, production) may require different settings.
+
+# Memory Management Settings
+# -------------------------
+# Controls memory usage and cleanup behavior of the application
+memory:
+  # Maximum memory usage in MB before optimization procedures are triggered
+  # Recommended: 400 (low-end systems), 800-1200 (high-end systems)
+  max_usage_mb: 400
+  
+  # Threshold at which memory cleanup is initiated (MB)
+  # Should be 10-20% lower than max_usage_mb
+  cleanup_threshold_mb: 350
+  
+  # How often to check memory usage (seconds)
+  # Lower values provide more responsive cleanup but increase overhead
+  tracking_interval_sec: 1.0
+  
+  # Whether to track detailed memory usage by component
+  # Set to false in production for better performance
+  enable_detailed_tracking: true
+
+# Cache Settings
+# -------------
+# Controls temporary storage behavior
+cache:
+  # Maximum size of cache in MB
+  # Recommended: 100 (small datasets), 500+ (large datasets)
+  max_size_mb: 100
+  
+  # Time-to-live for cached items in seconds (1 hour default)
+  ttl_seconds: 3600
+  
+  # How often to run cache cleanup in seconds (5 minutes default)
+  cleanup_interval: 300
+
+# Logging Configuration
+# --------------------
+# Controls logging behavior and output
+logging:
+  # Logging level: DEBUG, INFO, WARNING, ERROR, CRITICAL
+  # Use INFO for production, DEBUG for development
+  level: INFO
+  
+  # Log file location - ensure this directory exists or is created at startup
+  # For production, consider using absolute paths
+  file: logs/memory.log
+  
+  # Log format string (standard Python logging format)
+  format: '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+
+# Text and Document Processing Settings
+# ------------------------------------
+# Controls how documents are processed and chunked
+processing:
+  # Number of text chunks to process in a single batch
+  # Larger values improve throughput but require more memory
+  batch_size: 1000
+  
+  # Maximum number of parallel workers for processing
+  # Recommended: Set to number of CPU cores or slightly less
+  max_workers: 4
+  
+  # Size of text chunks for embedding and processing
+  # Smaller values (256-512) for more precise answers
+  # Larger values (768-1024) for better context understanding
+  chunk_size: 512
+  
+  # Size of the embedding vectors
+  # Must match the embedding model being used
+  embedding_size: 768
+
+# Vector Storage Settings
+# ----------------------
+# Uncomment and configure if using a specific vector database
+# vector_db:
+#   type: "chroma"  # Options: chroma, milvus, faiss
+#   persist_directory: "data/vectordb"
+#   collection_name: "pdf_documents"
+#   similarity_metric: "cosine"  # Options: cosine, euclidean, dot
+
+# PDF Processing Settings
+# ----------------------
+# Uncomment and configure for PDF-specific settings
+# pdf_processing:
+#   extraction_method: "pdfminer"  # Options: pdfminer, pypdf2, fitz
+#   ocr_enabled: false
+#   max_file_size_mb: 50
+#   page_overlap: 0.1  # 10% overlap between pages 
