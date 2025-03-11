@@ -20,7 +20,7 @@ A powerful document question-answering system that allows users to upload PDF do
 ### Step 1: Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/pdf-qa-system.git
+git clone https://github.com/B0DH1i/pdf-qa-system.git
 cd pdf-qa-system
 ```
 
